@@ -1,2 +1,2 @@
 # NagBot
-Discord bot to for water and posture checks
+Discord bot for water and posture checks
