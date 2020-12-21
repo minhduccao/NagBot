@@ -41,30 +41,18 @@ async def start_timer(ctx):
     if status == TimerStatus.STOPPED:
         # TODO: Add embed to ctx.send
         await ctx.send(desc)
-
-        await master(time_full, ctx)
+        await run_timer(time_full, ctx)
         while repeat_mode == 'True' and timer.get_status() != TimerStatus.PAUSED:
             if DEBUG: print('repeating, from stopped')
-            await master(time_full, ctx)
+            await run_timer(time_full, ctx)
             repeat_mode = config['CURRENT_SETTINGS']['repeat']  # grab latest repeat mode to check condition
-
-        # await run_timer(time_full)
-        # await time_out(ctx)
-        # while repeat_mode == 'True' and timer.get_status() != TimerStatus.PAUSED:        # loop for repeat mode
-        #     print('repeating')
-        #     await run_timer(time_full)
-        #     print('in start loop, timer status', timer.get_status())
-        #     await time_out(ctx)
     elif status == TimerStatus.PAUSED:
-        print('in pause')
         timer.resume()
-        await master(time_full, ctx)
+        await run_timer(time_full, ctx)
         while repeat_mode == 'True' and timer.get_status() != TimerStatus.PAUSED:
             repeat_mode = config['CURRENT_SETTINGS']['repeat']  # grab latest repeat mode to check condition
             if DEBUG: print('repeating, from paused')
-            await master(time_full, ctx)
-        # await run_timer(time_full)
-        # await time_out(ctx)
+            await run_timer(time_full, ctx)
     else:
         # TODO: Add embed to ctx
         await ctx.send('timer already running')
@@ -92,24 +80,7 @@ async def toggle_repeat(ctx):
     await ctx.send('Changed repeat mode to ' + repeat_mode)
 
 
-# Testing Timer function
-async def run_timer(duration: int):
-    timer.start(duration)
-    while timer.get_status() == TimerStatus.RUNNING:
-        await asyncio.sleep(1)
-        timer.tick()
-        print('tick', timer.get_time())
-
-
-async def time_out(ctx):
-    if timer.get_status() == TimerStatus.STOPPED:
-        # TODO: Add embed to ctx
-        # TODO: Change to ping role
-        print('time up')
-        await ctx.send('time up')
-
-
-async def master(duration: int, ctx):
+async def run_timer(duration: int, ctx):
     timer.start(duration)
     while timer.get_status() == TimerStatus.RUNNING:
         await asyncio.sleep(1)
