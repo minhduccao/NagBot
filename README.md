@@ -1,6 +1,8 @@
 # NagBot
 NagBot is a Discord bot written in Python using the discord.py API wrapper to remind users of water and posture checks. At the moment, it is intended to run on a single Discord server per bot instance.
 
+See a [list of all commands here](https://github.com/minhduccao/NagBot/wiki/Bot-Command-Reference).
+
 # Features
 1. Timer to remind users every x minutes with options to disable repeating pings
 2. Adjustable timer duration and ping message
