@@ -8,6 +8,7 @@ See a [list of all commands here](https://github.com/minhduccao/NagBot/wiki/Bot-
 2. Adjustable timer duration and ping message
 3. Easily add or remove self from bot pings via emoji reactions or bot command
 4. Ability to reset settings to default
+5. Logs errors to a separate file
 
 # Dependencies
 ```
