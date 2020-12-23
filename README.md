@@ -29,6 +29,7 @@ python-dotenv
 ```
 bot.py        | Code for NagBot and its functions
 timer.py      | Custom timer class with countdown and timer states
+error.log     | Error log for unhandled exceptions
 settings.ini  | Settings for timer duration, repeating timer mode, ping message
 .env          | Discord application token for bot
 ```
