@@ -236,7 +236,7 @@ async def on_reaction_add(reaction, user):
             await user.send(embed=em)
         elif reaction.emoji == '🔕':                     # `crossed out bell` emoji removes ping role from user
             await user.remove_roles(nag_role)
-            em = Embed(title=':bell: Ping Notification Enabled',
+            em = Embed(title=':bell: Ping Notification Disabled',
                        description='You won\'t be pinged by the bot anymore.',
                        color=MsgColors.BLACK.value)
             await user.send(embed=em)
